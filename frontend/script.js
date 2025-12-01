@@ -23,7 +23,7 @@ function init() {
 
     navUl.innerHTML += `
         <li>
-            <a href="./pages/login.html">Login</a>
+            <a href="./pages/jogar.html">Jogar</a>
         </li>
     `
 }
