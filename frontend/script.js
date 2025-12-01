@@ -3,7 +3,7 @@ function init() {
 
     const user = JSON.parse(sessionStorage.getItem("user"))
 
-    //verifica se existe um usuario logado
+    //verifica se existe um usuario logado e mostra o nome na tela e o botao de sair
     if (user) {
         navUl.innerHTML += `
             <li>
@@ -21,9 +21,10 @@ function init() {
         return
     }
 
+    //so vai aparecer quando o usuario nao tiver logado
     navUl.innerHTML += `
         <li>
-            <a href="./pages/jogar.html">Jogar</a>
+            <a href="./pages/login.html">Login</a>
         </li>
     `
 }
