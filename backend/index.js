@@ -1,4 +1,4 @@
-import express from "express"
+import express, { response } from "express"
 import cors from "cors"
 import mysql2 from "mysql2"
 
@@ -24,6 +24,35 @@ app.get("/", (request, response) => {
 
         response.json(users)
     })
+})
+
+
+app.post("/login", (request, response) => {
+    const {email, password} = request.body.user
+
+    const selectCommand = "SELECT * FROM luizbarbosa_02mb WHERE email = ?"
+
+    database.query(selectCommand, [email], (error, user) => {
+        if(error) {
+            console.log(error)
+            return
+        }
+
+
+        // se o usuario nao existir ou senha incorreta
+        if (user.length === 0 || user[0].password !== password) {
+            response.json({message: "Usuário ou senha incorretos!"})
+            return
+        }
+
+        response.json({id: user[0].id, name: user[0].name})
+    })
+})
+
+app.post("pontuacao", (resquest, response) => {
+    //pegar o id e a pontuação de dentro do request
+    //selecionar o usuario pelo id
+    // alterar a pontuação do banco de dados usando a pontuação que foi recebida do frontend
 })
 
 app.post("/cadastrar", (request, response) => {
