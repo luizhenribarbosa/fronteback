@@ -14,7 +14,7 @@ function init() {
                 <h2>Usuário: ${user.name}</h2>
             </li>
             <li>
-                <button>Sair</button>
+                <button id="logout">Sair</button>
             </li>
             
         `
